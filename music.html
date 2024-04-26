@@ -4,13 +4,29 @@
 		<link rel="stylesheet" type="text/css" href="music.css">
 		<script src="music.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 	</head>
 	<body>
 		<div class="alignVertical">
 			<p>slider tutorial</p>
-			<canvas id="musicGraph" style="width:25%;height:50%;background-color:red"></canvas>
-			<input type="range" min="1" max="100" value="50" class="slider" id="range">
-			<p>value: <span id="sliderValue">cee</span></p>
+			<canvas id="musicGraph" style="width:75%;height:100%;background-color:white"></canvas>
+			<div class="sliderDiv">
+				<div class="alignVertical">
+					<p>Frequency</p>
+					<input type="range" min="1" max="100" value="50" class="slider" id="frequency" oninput="updateSlider(0)">
+					<p>value: <span class="sliderValue">cee</span></p>
+				</div>
+				<div class="alignVertical">
+					<p>Speed</p>
+					<input type="range" min="1" max="50" value="25" class="slider" id="speed" oninput="updateSlider(1)">
+					<p>value: <span class="sliderValue">cee</span></p>
+				</div>
+				<div class="alignVertical">
+					<p>Acceleration</p>
+					<input type="range" min=".1" max="1.0" value=".2" step = ".1" class="slider" id="acceleration" oninput="updateSlider(2)">
+					<p>value: <span class="sliderValue">cee</span></p>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
