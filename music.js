@@ -41,11 +41,22 @@ function init()
 			maintainAspectRatio: false,
 			scales: 
 			{
+				xAxes:
+				[{
+					ticks: 
+					{
+						min: 0,
+						max: 100,
+						stepSize: 1
+					}
+				}],
 				yAxes: 
 				[{
 					
 					ticks: 
 					{
+						min: 0,
+						max: 1100,
 						stepSize: 1
 					}
 				}]
@@ -72,7 +83,7 @@ function updateData()
 	{
 		xValues[i] = (i);
 		console.log(f + (s*i) + (a**i));
-		yValues[i] = f + parseFloat(s*i) + parseFloat(a**2);
+		yValues[i] = f + parseFloat(s*i) + parseFloat((i**2) * a);
 		
 	}
 	if (musicGraph != undefined)
