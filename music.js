@@ -1,8 +1,13 @@
-var slider = document.getElementById("range");
-var printedValue = document.getElementById("value");
-printedValue.innerHTML = slider.value;
+window.onload = init;
 
-slider.onInput = function()
+function init()
 {
-	printedValue.innerHTML = this.value;
+	var slider = document.getElementById("range");
+	var printedValue = document.getElementById("sliderValue");
+	printedValue.innerHTML = slider.value;
+	
+	slider.oninput = function()
+	{
+		printedValue.innerHTML = this.value;
+	}
 }
