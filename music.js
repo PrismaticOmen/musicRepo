@@ -4,6 +4,8 @@ let printedValues;
 let xValues = [];
 let yValues = [];
 let musicGraph;
+let audioCt;
+var oscNode;
 
 function init()
 {
@@ -25,7 +27,8 @@ function init()
 			datasets: 
 			[{
 				fill: false,
-				backgroundColor: "rgba(0, 0, 0, 1.0)",
+				borderColor: "rgba(0, 154, 219, 1.0)",
+				backgroundColor: "rgba(0, 0, 0, 0)",
 				pointRadius: 1,
 				data: yValues
 			}]
@@ -34,11 +37,15 @@ function init()
 		{
 			title: 
 			{
-				display: true,
-				text: "music"
+				display: false,
+			},
+			legend:
+			{
+				display: false
 			},
 			responsive: true,
 			maintainAspectRatio: false,
+			backgroundColor: "rgba(0,0,0,0)",
 			scales: 
 			{
 				xAxes:
@@ -48,6 +55,11 @@ function init()
 						min: 0,
 						max: 100,
 						stepSize: 1
+					}, 
+					gridLines:
+					{
+						display: false,
+						drawBorder: false
 					}
 				}],
 				yAxes: 
@@ -58,12 +70,18 @@ function init()
 						min: 0,
 						max: 1100,
 						stepSize: 1
+					},
+					gridLines:
+					{
+						display: false,
+						drawBorder: false
 					}
 				}]
 			}
 		}
 	})
-
+	
+	audioCtx = new AudioContext();
 }
 
 function updateSlider(x)
@@ -82,7 +100,6 @@ function updateData()
 	for (let i = 0; i < 100; i++)
 	{
 		xValues[i] = (i);
-		console.log(f + (s*i) + (a**i));
 		yValues[i] = f + parseFloat(s*i) + parseFloat((i**2) * a);
 		
 	}
@@ -90,5 +107,28 @@ function updateData()
 	{
 		musicGraph.update();
 	}
+
 };
+
+function playSound()
+{
+	oscNode = new OscillatorNode(audioCtx, 
+	{
+		type: "sine",
+		frequency: 440,
+	});
+
+	const gainNode = new GainNode(audioCtx, 
+	{
+		gain: 0.5,
+	});
+
+	oscNode.connect(gainNode).connect(audioCtx.destination);
+	if(typeof AudioContext != "undefined" || typeof webkitAudioContext != "undefined") 
+	{
+		audioCtx.resume();
+		oscNode.start();
+		setTimeout(oscNode.stop(), 10000);
+	}
+}
 	
