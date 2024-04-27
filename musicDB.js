@@ -1,10 +1,13 @@
-window.onload = start;
+let inputMap = [];
 
-function start()
+function init()
 {
-	let inputMap = [];
 	var userInput = document.getElementById("chordInput").toString();
 	const userInputKeys = userInput.split(' ');
+	for (let i = 0; i < userInputKeys.length; i++)
+	{
+		inputMap.push(userInputKeys[i]);
+	}
 	
 	inputMap.push("chord progression");
 }

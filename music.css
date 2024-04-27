@@ -95,7 +95,7 @@
 	font-weight: bold;
 }
 
-#playSoundButton
+button
 {
 	width: 300px;
 	height: 100px;
@@ -110,7 +110,7 @@
 	margin-left: 0px;
 }
 
-#playSoundButton:hover
+button:hover
 {
 	width: 325px;
 	height: 125px;

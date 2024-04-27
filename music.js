@@ -7,6 +7,8 @@ let musicGraph;
 let audioContext;
 var oscNode;
 var gainNode;
+let inputMap = [];
+var userInputButton;
 
 function init()
 {
@@ -97,8 +99,7 @@ function init()
 		}
 	})
 	
-	//set up play button
-	var button = document.getElementById("playSoundButton").addEventListener("click", playSound());
+	var userInputButton = document.getElementById("chordInput").addEventListener('keydown', updateUserInput(event));
 }
 
 //updates info on screen, and the chart on screen
@@ -178,4 +179,19 @@ function getRandInt(max)
 function roundToTwoDec(number)
 {
 	return (Math.floor(number * 100)) / 100;
+}
+
+//takes in user input
+function updateUserInput()
+{
+	var userInput = document.getElementById("chordInput").value.toString();
+	console.log(userInput);
+	const userInputKeys = userInput.split(' ');
+	for (let i = 0; i < userInputKeys.length; i++)
+	{
+		inputMap.push(userInputKeys[i]);
+	}
+	
+	inputMap.push("chord progression");
+	document.getElementById("chordInput").value = "";
 }
