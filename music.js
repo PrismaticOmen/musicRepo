@@ -101,6 +101,7 @@ function init()
 	var button = document.getElementById("playSoundButton").addEventListener("click", playSound());
 }
 
+//updates info on screen, and the chart on screen
 function updateSlider(x)
 {
 	var slider = sliders[x];
@@ -129,6 +130,7 @@ function updateData()
 
 };
 
+//plays the series of sounds based on user settings
 function playSound()
 {
 	audioContext.resume();
@@ -146,7 +148,7 @@ function playSound()
 		for (let i = 1; i < notes; i++)
 		{
 			const noteTime = roundToTwoDec((timeInput / notes / speed) * (accel / i));
-			console.log(noteTime);
+			//console.log(noteTime);
 			var newFrequency = getRandInt(4000);
 			//console.log(newFrequency);
 			oscNode.frequency.linearRampToValueAtTime(newFrequency, now + noteTime)
