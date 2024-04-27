@@ -125,7 +125,6 @@ function updateData()
 		musicGraph.update();
 	}
 	
-	console.log(f);
 	oscNode.frequency.value = f;
 
 };
@@ -134,10 +133,47 @@ function playSound()
 {
 	audioContext.resume();
 	const timeDelay = 0.02;
-	const beepLength = 0.5;
-	
-	const now = audioContext.currentTime;
-	gainNode.gain.setTargetAtTime(1, now, timeDelay);
-	gainNode.gain.setTargetAtTime(0, now + beepLength, timeDelay);
+	var speed = parseFloat(document.getElementById("speed").value);
+	var accel = parseFloat(document.getElementById("acceleration").value);
+	var timeInput = parseFloat(document.getElementById("time").value);
+	var notes = parseInt(document.getElementById("notes").value);
+	var totalTime = 0;
+	const startingTime = audioContext.currentTime;
+	if (notes > 1 && timeInput > 0)
+	{
+		var now = audioContext.currentTime;
+		
+		for (let i = 1; i < notes; i++)
+		{
+			const noteTime = roundToTwoDec((timeInput / notes / speed) * (accel / i));
+			console.log(noteTime);
+			var newFrequency = getRandInt(4000);
+			//console.log(newFrequency);
+			oscNode.frequency.linearRampToValueAtTime(newFrequency, now + noteTime)
+			
+			totalTime += noteTime;
+			now       += noteTime;
+
+		}
+		gainNode.gain.setTargetAtTime(1, startingTime, timeDelay);
+		gainNode.gain.setTargetAtTime(0, startingTime + totalTime, timeDelay);
+	}
+}
+
+
+function sleep(ms) 
+{
+  return new Promise(resolve => setTimeout(resolve, ms));
+  console.log("sleep");
+}
+
+function getRandInt(max)
+{
+	return Math.floor(Math.random() * max);
 }
 	
+	
+function roundToTwoDec(number)
+{
+	return (Math.floor(number * 100)) / 100;
+}
