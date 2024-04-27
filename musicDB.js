@@ -1,9 +1,9 @@
-window.onload = init;
+window.onload = start;
 
-function init()
+function start()
 {
-	let inputMap = {};
-	var userInput = document.getElementById("chordInput");
+	let inputMap = [];
+	var userInput = document.getElementById("chordInput").toString();
 	const userInputKeys = userInput.split(' ');
 	
 	inputMap.push("chord progression");
