@@ -14,38 +14,52 @@
 				<cite>Music Note by ruhbastard</cite>
 				<p class="heading">Creating Music</p>
 			</div>
-			<canvas id="musicGraph"></canvas>
-			<button id="playSoundButton" onclick="playSound()">Play sound</button>
-			<div class="mainSliderDiv">
-				<div class="alignVertical sliderDiv">
-					<p class="headingFont">Frequency</p>
-					<input type="range" min="1" max="15000" value="1000" class="slider" id="frequency" oninput="updateSlider(0)">
-					<p class="font">Value: <span class="sliderValue font">cee</span></p>
-					<p class="font">Frequency determines the frequency of the starting note</p>
+			<div class="alignHorizontal">
+				<canvas id="musicGraph"></canvas>
+				<div class="lightGreen">
+					<p class="headingFont">Adjust settings for your sound</p>
+					<div class="mainSliderDiv">
+						<div class="alignVertical sliderDiv">
+							<p class="headingFont">Frequency</p>
+							<input type="range" min="1" max="15000" value="1000" class="slider" id="frequency" oninput="updateSlider(0)">
+							<p class="font">Value: <span class="sliderValue font">cee</span></p>
+							<p class="font">Frequency determines the frequency of the starting note</p>
+						</div>
+						<div class="alignVertical sliderDiv">
+							<p class="headingFont">Notes</p>
+							<input type="text" min="0" max="12" value="5" class="slider" id="notes" oninput="updateSlider(1)">
+							<p class="font">Value: <span class="sliderValue font">cee</span></p>
+							<p class="font">Notes determines how many notes are played</p>
+						</div>
+						<div class="alignVertical sliderDiv">
+							<p class="headingFont">Time</p>
+							<input type="text" min="0" max="12" value="1.0" class="slider" id="time" oninput="updateSlider(2)">
+							<p class="font">Value: <span class="sliderValue font">cee</span></p>
+							<p class="font">Time determines how long the melody is played for</p>
+						</div>
+						<div class="alignVertical sliderDiv">
+							<p class="headingFont">Speed</p>
+							<input type="range" min="-.5" max="3.0" value="1" step=".5" class="slider" id="speed" oninput="updateSlider(3)">
+							<p class="font">Value: <span class="sliderValue font">cee</span></p>
+							<p class="font">Speed determines the speed the melody is played back at</p>
+						</div>
+						<div class="alignVertical sliderDiv">
+							<p class="headingFont">Acceleration</p>
+							<input type="range" min="-1.0" max="1.0" value=".2" step = ".1" class="slider" id="acceleration" oninput="updateSlider(4)">
+							<p class="font">Value: <span class="sliderValue font">cee</span></p>
+							<p class="font">Acceleration determines how much the melody speeds up or slows down over time</p>
+						</div>
+					</div>
 				</div>
-				<div class="alignVertical sliderDiv">
-					<p class="headingFont">Notes</p>
-					<input type="text" min="0" max="12" value="5" class="slider" id="notes" oninput="updateSlider(1)">
-					<p class="font">Value: <span class="sliderValue font">cee</span></p>
-					<p class="font">Notes determines how many notes are played</p>
-				</div>
-				<div class="alignVertical sliderDiv">
-					<p class="headingFont">Time</p>
-					<input type="text" min="0" max="12" value="1.0" class="slider" id="time" oninput="updateSlider(2)">
-					<p class="font">Value: <span class="sliderValue font">cee</span></p>
-					<p class="font">Time determines how long the melody is played for</p>
-				</div>
-				<div class="alignVertical sliderDiv">
-					<p class="headingFont">Speed</p>
-					<input type="range" min="-.5" max="3.0" value="1" step=".5" class="slider" id="speed" oninput="updateSlider(3)">
-					<p class="font">Value: <span class="sliderValue font">cee</span></p>
-					<p class="font">Speed determines the speed the melody is played back at</p>
-				</div>
-				<div class="alignVertical sliderDiv">
-					<p class="headingFont">Acceleration</p>
-					<input type="range" min="-1.0" max="1.0" value=".2" step = ".1" class="slider" id="acceleration" oninput="updateSlider(4)">
-					<p class="font">Value: <span class="sliderValue font">cee</span></p>
-					<p class="font">Acceleration determines how much the melody speeds up or slows down over time</p>
+			</div>
+			<div class="alignVertical">
+				<button id="playSoundButton" onclick="playSound()">Play sounds</button>
+				<div class="lightGreen">
+					<p class = "font">Give input for the kind of chord progression you want</p>
+					<div class="alignVertical">
+						<p class="headingFont">Notes</p>
+						<input type="text"  id="chordInput">
+					</div>
 				</div>
 			</div>
 		</div>
