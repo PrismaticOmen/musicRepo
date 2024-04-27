@@ -4,11 +4,25 @@ let printedValues;
 let xValues = [];
 let yValues = [];
 let musicGraph;
-let audioCt;
+let audioContext;
 var oscNode;
+var gainNode;
 
 function init()
 {
+	//set up audio
+	audioContext = new AudioContext();
+	gainNode = audioContext.createGain();
+	gainNode.connect(audioContext.destination);
+	gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+	oscNode = audioContext.createOscillator();
+	oscNode.type = "sine";
+	oscNode.frequency = 440;
+	oscNode.connect(gainNode);
+	oscNode.start();
+	
+	
+	//set up sliders
 	sliders = document.getElementsByClassName("slider");
 	printedValues = document.getElementsByClassName("sliderValue");
 	console.log("init");
@@ -16,8 +30,9 @@ function init()
 	{
 		updateSlider(i);
 	}
-	updateData();
 	
+	//set up graph
+	updateData();
 	musicGraph = new Chart("musicGraph", 
 	{
 		type: "line",
@@ -50,6 +65,7 @@ function init()
 			{
 				xAxes:
 				[{
+					display: false,
 					ticks: 
 					{
 						min: 0,
@@ -64,11 +80,11 @@ function init()
 				}],
 				yAxes: 
 				[{
-					
+					display: false,
 					ticks: 
 					{
 						min: 0,
-						max: 1100,
+						max: 20000,
 						stepSize: 1
 					},
 					gridLines:
@@ -81,7 +97,8 @@ function init()
 		}
 	})
 	
-	audioCtx = new AudioContext();
+	//set up play button
+	var button = document.getElementById("playSoundButton").addEventListener("click", playSound());
 }
 
 function updateSlider(x)
@@ -107,28 +124,20 @@ function updateData()
 	{
 		musicGraph.update();
 	}
+	
+	console.log(f);
+	oscNode.frequency.value = f;
 
 };
 
 function playSound()
 {
-	oscNode = new OscillatorNode(audioCtx, 
-	{
-		type: "sine",
-		frequency: 440,
-	});
-
-	const gainNode = new GainNode(audioCtx, 
-	{
-		gain: 0.5,
-	});
-
-	oscNode.connect(gainNode).connect(audioCtx.destination);
-	if(typeof AudioContext != "undefined" || typeof webkitAudioContext != "undefined") 
-	{
-		audioCtx.resume();
-		oscNode.start();
-		setTimeout(oscNode.stop(), 10000);
-	}
+	audioContext.resume();
+	const timeDelay = 0.02;
+	const beepLength = 0.5;
+	
+	const now = audioContext.currentTime;
+	gainNode.gain.setTargetAtTime(1, now, timeDelay);
+	gainNode.gain.setTargetAtTime(0, now + beepLength, timeDelay);
 }
 	

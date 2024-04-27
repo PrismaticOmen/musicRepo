@@ -8,11 +8,31 @@
 	
 }
 
-.sliderDiv
+.alignHorizontal
+{
+	display: flex;
+	flex-direction: row;
+	padding-right: 2%;
+	align-items:center;
+	
+}
+
+.mainSliderDiv
 {
 	display: flex;
 	flex-direction:row;
 	padding: 1%;
+}
+
+.sliderDiv
+{
+	background-color: #96eeff;
+	border: solid;
+	border-color: black;
+	border-radius: 6px;
+	border-width: 2px;
+	padding: 10px;
+	margin-right: 10px;
 }
 
 .slider
@@ -20,12 +40,23 @@
 	width: 200px;
 }
 
-.headingFont
+.heading
 {
 	font-family: "Luckiest Guy";
 	font-size: 75px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+.headingFont
+{
+	font-family: "Luckiest Guy";
+	font-size: 20px;
+}
+
+.font
+{
+	font-weight: bold;
 }
 
 #playSoundButton
@@ -34,12 +65,51 @@
 	height: 100px;
 	background-color: #009adb;
 	font-family: "Luckiest Guy";
-	font-size: 26px;
+	font-size: 30px;
 	margin-top: 10px;
 	margin-bottom: 5px;
+	border: solid;
+	border-radius: 12px;
+	border-color: black;
+	border-width: 4px;
+}
+
+#playSoundButton:hover
+{
+	width: 325px;
+	height: 125px;
+	background-color: #59b2ff;
+	font-size: 38px;
 }
 
 body
 {
 	background-color: #8affad;
+}
+
+p
+{
+	margin: 0px;
+}
+
+canvas
+{
+	background-color: #e2ffb5;
+	width: 75%;
+	max-width: 75%;
+	height: 100%;
+	border: solid;
+	border-width: 4px;
+	border-radius:24px;
+}
+
+img
+{
+	height: 7vw;
+	width: 7vw;
+}
+
+cite
+{
+	font-size: 0px;
 }

@@ -9,24 +9,28 @@
 	</head>
 	<body>
 		<div class="alignVertical">
-			<p class="headingFont">Creating Music</p>
-			<canvas id="musicGraph" style="width:75%;max-width:75%;height:100%;background-color:white"></canvas>
+			<div class="alignHorizontal">
+				<img src="https://cdn.pixabay.com/photo/2017/01/09/20/11/music-1967480_1280.png" alt="music note">
+				<cite>Music Note by ruhbastard</cite>
+				<p class="heading">Creating Music</p>
+			</div>
+			<canvas id="musicGraph"></canvas>
 			<button id="playSoundButton" onclick="playSound()">Play sound</button>
-			<div class="sliderDiv">
-				<div class="alignVertical">
-					<p>Frequency</p>
-					<input type="range" min="1" max="100" value="50" class="slider" id="frequency" oninput="updateSlider(0)">
-					<p>value: <span class="sliderValue">cee</span></p>
+			<div class="mainSliderDiv">
+				<div class="alignVertical sliderDiv">
+					<p class="headingFont">Frequency</p>
+					<input type="range" min="1" max="15000" value="50" class="slider" id="frequency" oninput="updateSlider(0)">
+					<p class="font">Value: <span class="sliderValue font">cee</span></p>
 				</div>
-				<div class="alignVertical">
-					<p>Speed</p>
+				<div class="alignVertical sliderDiv">
+					<p class="headingFont">Speed</p>
 					<input type="range" min="0" max="10" value="5" class="slider" id="speed" oninput="updateSlider(1)">
-					<p>value: <span class="sliderValue">cee</span></p>
+					<p class="font">Value: <span class="sliderValue font">cee</span></p>
 				</div>
-				<div class="alignVertical">
-					<p>Acceleration</p>
+				<div class="alignVertical sliderDiv">
+					<p class="headingFont">Acceleration</p>
 					<input type="range" min="0" max="1.0" value=".2" step = ".1" class="slider" id="acceleration" oninput="updateSlider(2)">
-					<p>value: <span class="sliderValue">cee</span></p>
+					<p class="font">Value: <span class="sliderValue font">cee</span></p>
 				</div>
 			</div>
 		</div>
