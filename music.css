@@ -185,3 +185,13 @@ cite
 {
 	font-size: 0px;
 }
+
+ul 
+{
+	padding: 0px;
+}
+
+li
+{
+	margin-left: 20px;
+}

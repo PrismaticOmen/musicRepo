@@ -24,7 +24,7 @@
 							<div class="alignVertical sliderDiv">
 								<p class="headingFont">Frequency</p>
 								<input type="range" min="20" max="15000" value="1000" class="slider" id="frequency" oninput="updateSlider(0)">
-								<p class="font">Value: <span class="sliderValue font">cee</span></p>
+								<p class="font">Value: <span class="sliderValue font">cee</span>Hz</p>
 								<p class="font">Frequency determines the frequency of the 1st note</p>
 							</div>
 							<div class="alignVertical sliderDiv">
@@ -42,7 +42,7 @@
 							<div class="alignVertical sliderDiv">
 								<p class="headingFont">Speed</p>
 								<input type="range" min="-.5" max="3.0" value="1" step=".5" class="slider" id="speed" oninput="updateSlider(3)">
-								<p class="font">Value: <span class="sliderValue font">cee</span></p>
+								<p class="font">Value: <span class="sliderValue font">cee</span>s</p>
 								<p class="font">Speed determines the speed the melody is played at</p>
 							</div>
 							<div class="alignVertical sliderDiv">
@@ -62,7 +62,8 @@
 				<p class = "font">Give input for the kind of chord progression you want for the rest of your notes</p>
 				<div class="alignVertical">
 					<p class="headingFont">Notes</p>
-					<input type="text" id="chordInput">
+					<input type="text" id="chordInput" onchange="updateUserInput()">
+					<ul class="font">Previous Inputs: <span id="lastInput"></span></ul>
 					<button id="userInputButton" onclick="updateUserInput()">Enter Input</button>
 				</div>
 			</div>

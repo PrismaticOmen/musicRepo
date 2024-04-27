@@ -8,7 +8,6 @@ let audioContext;
 var oscNode;
 var gainNode;
 let inputMap = [];
-var userInputButton;
 
 function init()
 {
@@ -98,8 +97,6 @@ function init()
 			}
 		}
 	})
-	
-	var userInputButton = document.getElementById("chordInput").addEventListener('keydown', updateUserInput(event));
 }
 
 //updates info on screen, and the chart on screen
@@ -194,4 +191,7 @@ function updateUserInput()
 	
 	inputMap.push("chord progression");
 	document.getElementById("chordInput").value = "";
+	const listItem = document.createElement('li');
+	listItem.innerHTML = userInput;
+	document.getElementById("lastInput").appendChild(listItem);
 }
