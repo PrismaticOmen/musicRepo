@@ -33,6 +33,7 @@ function init()
 	}
 	
 	//set up graph
+	//keep information for values 
 	updateData();
 	musicGraph = new Chart("musicGraph", 
 	{
